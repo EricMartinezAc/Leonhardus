@@ -18,7 +18,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class,'Dashboard'])->name('dashboard');
-    Route::resource('/category', CategoryController::class);
+    Route::resource('/categories', CategoryController::class);
     Route::resource('/lessons', LessonController::class);
     Route::resource('/roles', RolesController::class);
 });
