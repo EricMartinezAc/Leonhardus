@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Inertia\Response;
 
 
 class CategoryController extends Controller
@@ -15,7 +16,7 @@ class CategoryController extends Controller
     {
         //
         $categories = Category::paginate(25);
-        return inertia('Categories/Index', ['categories' => $categories]);
+        return inertia('Categories/index', ['categories' => $categories]);
     }
 
     /**
@@ -23,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Categories/CreateForm');
     }
 
     /**

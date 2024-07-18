@@ -1,0 +1,35 @@
+<script>
+    export default {
+        name: "CreateForm",
+    };
+</script>
+
+<script setup>
+    import {useForm} from "@inertiajs/vue3";
+    import AppLayout from '@/Layouts/AppLayout.vue'
+    import CreateCategoryForm from '@/Components/Categories/createForm.vue';
+
+    const form = useForm({
+        name: "",
+    })
+</script>
+
+<template>
+    <AppLayout>
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Create Category
+            </h2>
+        </template>
+        <div>
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <CreateCategoryForm :form="createForm" 
+                        @submit="form.post(route('categories.store'))" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </AppLayout>
+</template>
