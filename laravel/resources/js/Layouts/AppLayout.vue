@@ -194,7 +194,7 @@ const logout = () => {
                                                     Switch Teams
                                                 </div>
 
-                                                <template
+                                                <div
                                                     v-for="team in $page.props
                                                         .auth.user.all_teams"
                                                     :key="team.id"
@@ -241,7 +241,7 @@ const logout = () => {
                                                             </div>
                                                         </DropdownLink>
                                                     </form>
-                                                </template>
+                                                </div>
                                             </template>
                                         </div>
                                     </template>
@@ -533,7 +533,7 @@ const logout = () => {
                                         Switch Teams
                                     </div>
 
-                                    <template
+                                    <div
                                         v-for="team in $page.props.auth.user
                                             .all_teams"
                                         :key="team.id"
@@ -567,7 +567,7 @@ const logout = () => {
                                                 </div>
                                             </ResponsiveNavLink>
                                         </form>
-                                    </template>
+                                    </div>
                                 </template>
                             </template>
                         </div>

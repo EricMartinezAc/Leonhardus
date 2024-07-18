@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Inertia\Response;
 
@@ -24,15 +24,19 @@ class CategoryController extends Controller
      */
     public function create()
     {
+
         return inertia('Categories/CreateForm');
     }
-
+    /**
+     * @param App\Http\Requests\CategoryRequest;
+     */
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        Category::create($request->validated());
+        return redirect()->route('categories.index');
     }
 
     /**
