@@ -33,5 +33,17 @@ import TextInput from '@/Component/TextInput.vue';
         <template #description>
             {{ updating ? 'to update the category' : 'to create a new category' }}
         </template>
+
+        <template #form>
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="name" value="Name" />  
+                <TextInput id="name" v-model="form.name" type="text" autocomplete="name" class="mt-1 block w-full"/>
+                <InputError :message="$page.props.errors.name" class="mt-2" />"
+            </div>
+        </template>
+
+        <template #actions>
+            <PrimaryButton>{{ updating ? 'Update' : 'Create' }}</PrimaryButton>
+        </template>
     </FormSection>
 </template>
