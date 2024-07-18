@@ -7,6 +7,8 @@ export default {
 <script setup>
 import AppLayout from "@/Layouts/AppLayout.vue";
 import { Link } from "@inertiajs/vue3";
+import { Inertia } from "@inertiajs/inertia";
+
 defineProps({
   categories: {
     type: Object,
@@ -60,6 +62,9 @@ const deleteCategory = (id) => {
                   <Link
                     :href="route('categories.edit', category.id)"
                     class="text-indigo-600 hover:text-indigo-900"
+                    v-if="
+                      $page.props.user.permissions.includes('edit-category')
+                    "
                   >
                     Edit
                   </Link>
@@ -72,6 +77,24 @@ const deleteCategory = (id) => {
                 </div>
               </li>
             </ul>
+          </div>
+
+          <div class="flex justify-between">
+            <Link
+              v-if="categories.current_page > 1"
+              :href="categories.prev_page_url"
+              class="bg-gray-500 hover:bg-gray-900 text-white py-2 px-4 rounded"
+            >
+              {{ "<< PREV" }}
+            </Link>
+            <div v-else></div>
+            <Link
+              v-if="categories.current_page < categories.last_page"
+              :href="categories.next_page_url"
+              class="bg-gray-500 hover:bg-gray-900 text-white py-2 px-4 rounded"
+            >
+              {{ "NEXT >>" }}
+            </Link>
           </div>
         </div>
       </div>
